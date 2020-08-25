@@ -8,11 +8,6 @@
 const { parseMultipartData, sanitizeEntity } = require('strapi-utils');
 
 module.exports = {
-  /**
-   * Create a record.
-   *
-   * @return {Object}
-   */
 
   async create(ctx) {
     let entity;
@@ -20,10 +15,10 @@ module.exports = {
       const { data, files } = parseMultipartData(ctx);
 
       if (!data || !data.description) {
-        ctx.throw(400, 'Please add some content')
+        ctx.throw(400, 'Please write a description')
       }
 
-      if (!files || !files.length) {
+      if (!files || !files.image) {
         ctx.throw(400, 'Please add some at least a file')
       }
 
